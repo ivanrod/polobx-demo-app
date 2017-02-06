@@ -84,6 +84,9 @@ subject to an additional IP rights grant found at http://polymer.github.io/PATEN
           <app-toolbar>
             <paper-icon-button icon="my-icons:menu" drawer-toggle></paper-icon-button>
             <div main-title>My App</div>
+            <div>
+              <p>App state property from myStore: [[myVar]]</p>
+            </div>
           </app-toolbar>
         </app-header>
 
@@ -105,12 +108,22 @@ subject to an additional IP rights grant found at http://polymer.github.io/PATEN
     Polymer({
       is: 'my-app',
 
+      behaviors: [PolobxBehavior],
+
       properties: {
         page: {
           type: String,
           reflectToAttribute: true,
           observer: '_pageChanged',
         },
+
+        myVar: {
+          type: String,
+          statePath: {
+            store: 'myStore',
+            path: 'foo'
+          }
+        }
       },
 
       observers: [

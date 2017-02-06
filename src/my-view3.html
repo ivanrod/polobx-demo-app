@@ -24,15 +24,46 @@ subject to an additional IP rights grant found at http://polymer.github.io/PATEN
 
     <div class="card">
       <div class="circle">3</div>
-      <h1>View Three</h1>
-      <p>Modus commodo minimum eum te, vero utinam assueverit per eu.</p>
-      <p>Ea duis bonorum nec, falli paulo aliquid ei eum.Has at minim mucius aliquam, est id tempor laoreet.Pro saepe pertinax ei, ad pri animal labores suscipiantur.</p>
+      <h1>Store status:</h1>
+      <div>
+        <p>myStore.counter: [[counter]]</p>
+        <p>myStore.foo: [[foo]]</p>
+        <p>myStore.xxx.xx.x: [[deepVar]]</p>
+      </div>
     </div>
   </template>
 
   <script>
     Polymer({
       is: 'my-view3',
+
+      behaviors: [PolobxBehavior],
+
+      properties: {
+        foo: {
+          type: String,
+          statePath: {
+            store: 'myStore',
+            path: 'foo'
+          }
+        },
+
+        counter: {
+          type: Number,
+          statePath: {
+            store: 'myStore',
+            path: 'counter'
+          }
+        },
+
+        deepVar: {
+          type: String,
+          statePath: {
+            store: 'myStore',
+            path: 'xxx.xx.x'
+          }
+        }
+      }
     });
   </script>
 </dom-module>

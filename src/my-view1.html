@@ -23,12 +23,15 @@ subject to an additional IP rights grant found at http://polymer.github.io/PATEN
 
     <div class="card">
       <div class="circle">1</div>
-      <h1>View One</h1>
-      <button on-click="addOneToCounter">X</button>
-      <p>Ut labores minimum atomorum pro. Laudem tibique ut has.</p>
-      <p>myVar: [[myVar]]</p>
-      <p>deepVar: [[deepVar]]</p>
-      <p>Lorem ipsum dolor sit amet, per in nusquam nominavi periculis, sit elit oportere ea.Lorem ipsum dolor sit amet, per in nusquam nominavi periculis, sit elit oportere ea.Cu mei vide viris gloriatur, at populo eripuit sit.</p>
+      <h1>Add one to myStore.counter:</h1>
+      <button on-click="addOneToCounter">Add one +</button>
+
+      <div>
+        <h3>Store status:</h3>
+        <p>myStore.counter: [[myCounterVar]]</p>
+        <p>myStore.foo: [[myFooVar]]</p>
+        <p>myStore.xxx.xx.x: [[deepVar]]</p>
+      </div>
     </div>
   </template>
 
@@ -37,13 +40,22 @@ subject to an additional IP rights grant found at http://polymer.github.io/PATEN
       is: 'my-view1',
       behaviors: [PolobxBehavior],
       properties: {
-        myVar: {
+        myFooVar: {
+          type: String,
+          statePath: {
+            store: 'myStore',
+            path: 'foo'
+          }
+        },
+
+        myCounterVar: {
           type: Number,
           statePath: {
             store: 'myStore',
             path: 'counter'
           }
         },
+
         deepVar: {
           type: String,
           statePath: {

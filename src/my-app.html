@@ -75,6 +75,10 @@ subject to an additional IP rights grant found at http://polymer.github.io/PATEN
           <a name="view2" href="/view2">View Two</a>
           <a name="view3" href="/view3">View Three</a>
         </iron-selector>
+
+        <div>
+          <p>Store foo property: [[myVar]]</p>
+        </div>
       </app-drawer>
 
       <!-- Main content -->
@@ -85,7 +89,7 @@ subject to an additional IP rights grant found at http://polymer.github.io/PATEN
             <paper-icon-button icon="my-icons:menu" drawer-toggle></paper-icon-button>
             <div main-title>My App</div>
             <div>
-              <p>App state property from myStore: [[myVar]]</p>
+              <p>Store Counter: [[myCounter]]</p>
             </div>
           </app-toolbar>
         </app-header>
@@ -122,6 +126,14 @@ subject to an additional IP rights grant found at http://polymer.github.io/PATEN
           statePath: {
             store: 'myStore',
             path: 'foo'
+          }
+        },
+
+        myCounter: {
+          type: Number,
+          statePath: {
+            store: 'myStore',
+            path: 'counter'
           }
         }
       },

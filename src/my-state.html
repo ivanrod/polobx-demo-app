@@ -1,0 +1,28 @@
+<link rel="import" href="../bower_components/polobx/polobx.html">
+
+<script>
+PolobxBehavior = createPolobxBehavior(
+  {
+    myStore: {
+      store: {
+        counter: 0,
+        foo: 'bar',
+        xxx: {
+          xx: {
+            x: 'yeah'
+          }
+        }
+      },
+
+      actions: {
+        changeFoo: function(newFoo) {
+          this.store.foo = newFoo;
+        },
+        addOne: function() {
+          this.store.counter++;
+        }
+      }
+    }
+  }
+);
+</script>

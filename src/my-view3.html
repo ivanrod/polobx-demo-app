@@ -29,6 +29,14 @@ subject to an additional IP rights grant found at http://polymer.github.io/PATEN
         <p>myStore.counter: [[counter]]</p>
         <p>myStore.foo: [[foo]]</p>
         <p>myStore.xxx.xx.x: [[deepVar]]</p>
+        <div>
+          <p>myStore.colors: </p>
+          <ul>
+            <template is="dom-repeat" items="[[colors]]" as="color">
+              <li>[[color]]</li>
+            </template>
+          </ul>
+        </div>
       </div>
     </div>
   </template>
@@ -61,6 +69,14 @@ subject to an additional IP rights grant found at http://polymer.github.io/PATEN
           statePath: {
             store: 'myStore',
             path: 'xxx.xx.x'
+          }
+        },
+
+        colors: {
+          type: Array,
+          statePath: {
+            store: 'myStore',
+            path: 'colors'
           }
         }
       }

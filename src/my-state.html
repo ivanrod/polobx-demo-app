@@ -6,6 +6,12 @@ PolobxBehavior = createPolobxBehavior(
     myStore: {
       store: {
         counter: 0,
+        colors: [
+          'orange',
+          'blue',
+          'green',
+          'red'
+        ],
         foo: 'bar',
         xxx: {
           xx: {
@@ -20,6 +26,10 @@ PolobxBehavior = createPolobxBehavior(
         },
         addOne: function() {
           this.store.counter++;
+        },
+
+        addColor: function(color) {
+          this.store.colors.push(color);
         }
       }
     }

@@ -26,6 +26,7 @@ subject to an additional IP rights grant found at http://polymer.github.io/PATEN
       <div class="circle">2</div>
       <h1>Change myStore.foo:</h1>
       <input value={{myView2Var::input}}></input>
+      <button on-click="addColorToStore">Add custom color</button>
     </div>
   </template>
 
@@ -49,6 +50,14 @@ subject to an additional IP rights grant found at http://polymer.github.io/PATEN
           store: 'myStore',
           action: 'changeFoo',
           payload: newValue
+        });
+      },
+
+      addColorToStore: function() {
+        this.dispatch({
+          store: 'myStore',
+          action: 'addColor',
+          payload: this.myView2Var
         });
       }
     });

@@ -25,12 +25,22 @@ subject to an additional IP rights grant found at http://polymer.github.io/PATEN
       <div class="circle">1</div>
       <h1>Add one to myStore.counter:</h1>
       <button on-click="addOneToCounter">Add one +</button>
+      <button on-click="fetchColorsFromServer">Fetch Colors</button>
 
       <div>
         <h3>Store status:</h3>
         <p>myStore.counter: [[myCounterVar]]</p>
         <p>myStore.foo: [[myFooVar]]</p>
         <p>myStore.xxx.xx.x: [[deepVar]]</p>
+      </div>
+      <div>
+        <p>myStore.colors: </p>
+        <p hidden$="[[!loading]]">Fetching colors...</p>
+        <ul>
+          <template is="dom-repeat" items="[[colors]]" as="color">
+            <li>[[color]]</li>
+          </template>
+        </ul>
       </div>
     </div>
   </template>
@@ -62,6 +72,19 @@ subject to an additional IP rights grant found at http://polymer.github.io/PATEN
             store: 'myStore',
             path: 'xxx.xx.x'
           }
+        },
+
+        colors: {
+          type: Array,
+          statePath: {
+            store: 'myStore',
+            path: 'colors'
+          }
+        },
+
+        loading: {
+          type: Boolean,
+          value: false
         }
       },
       changeFoo: function() {
@@ -77,6 +100,21 @@ subject to an additional IP rights grant found at http://polymer.github.io/PATEN
           store: 'myStore',
           action: 'addOne'
         });
+
+        console.log(this.getStateProperty('myStore', 'xxx.xx.x'))
+      },
+
+      fetchColorsFromServer: function() {
+        this.set('loading', true);
+
+        this.dispatch({
+          store: 'myStore',
+          action: 'fetchColors'
+        })
+        .then(() => {
+          this.set('loading', false);
+        })
+
       }
     });
   </script>

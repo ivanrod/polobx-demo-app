@@ -105,15 +105,16 @@ subject to an additional IP rights grant found at http://polymer.github.io/PATEN
       },
 
       fetchColorsFromServer: function() {
+        var self = this;
         this.set('loading', true);
 
         this.dispatch({
           store: 'myStore',
           action: 'fetchColors'
         })
-        .then(() => {
-          this.set('loading', false);
-        })
+        .then(function() {
+          self.set('loading', false);
+        });
 
       }
     });

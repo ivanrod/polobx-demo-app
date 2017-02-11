@@ -1,5 +1,9 @@
 {
   "rules": {
+    "colors": {
+      ".read": true,
+      ".write": false
+    },
     ".read": "auth != null",
     ".write": "auth != null"
   }

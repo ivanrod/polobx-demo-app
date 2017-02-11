@@ -1,26 +1,12 @@
 <link rel="import" href="../bower_components/polobx/polobx.html">
 
-<script src="https://www.gstatic.com/firebasejs/3.4.0/firebase.js"></script>
-
 <script>
-  // Initialize Firebase
-  var config = {
-    apiKey: "AIzaSyBqkjq2TVdULdH30c6YqqaREllH-xGuh00",
-    authDomain: "polobx-demo-app.firebaseapp.com",
-    databaseURL: "https://polobx-demo-app.firebaseio.com",
-    storageBucket: "polobx-demo-app.appspot.com",
-    messagingSenderId: "756010938151"
-  };
-  firebase.initializeApp(config);
+// Start websockets connection to fetch 'colors' collection from firebase server
+var colorsSubscription = firebase.database().ref('colors');
 
-  // Start websockets connection to fetch 'colors' collection from firebase server
-  var colorsSubscription = firebase.database().ref('colors');
+// For more info on firebase sdk methods:
+// https://www.npmjs.com/package/firebase
 
-  // For more info on firebase sdk methods:
-  // https://www.npmjs.com/package/firebase
-</script>
-
-<script>
 PolobxBehavior = createPolobxBehavior(
   {
     myStore: {
@@ -51,6 +37,8 @@ PolobxBehavior = createPolobxBehavior(
           this.store.colors = colors.val();
         },
 
+        // Async action example
+        // Fetch colors from firebase
         fetchColors: function() {
           // Waits for changes in 'colors' collection on server
           // and use setColors() method

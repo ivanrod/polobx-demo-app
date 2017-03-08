@@ -12,12 +12,14 @@ The main files are in `/src`:
 You can watch the result [here](https://polobx-demo-app.firebaseapp.com).
 
 ## Local install
-`npm i && bower install`
+Make sure you have polymer CLI installed or:
+- `yarn add global polymer-cli`
+- `npm i -g polymer-cli`
 
-Optionally: `polymer build`
+Run `polymer install`
 
 ## Test
-Run `npm test`
+Run `polymer test`
 
 ## Run locally
 After install: `polymer serve` and follow instructions

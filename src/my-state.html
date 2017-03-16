@@ -10,7 +10,7 @@ var colorsSubscription = firebase.database().ref('colors');
 PolobxBehavior = createPolobxBehavior(
   {
     myStore: {
-      store: {
+      model: {
         counter: 0,
         colors: [],
         foo: 'bar',
@@ -23,18 +23,18 @@ PolobxBehavior = createPolobxBehavior(
 
       actions: {
         changeFoo: function(newFoo) {
-          this.store.foo = newFoo;
+          this.model.foo = newFoo;
         },
         addOne: function() {
-          this.store.counter++;
+          this.model.counter++;
         },
 
         addColor: function(color) {
-          this.store.colors.push(color);
+          this.model.colors.push(color);
         },
 
         setColors: function(colors) {
-          this.store.colors = colors.val();
+          this.model.colors = colors.val();
         },
 
         // Async action example

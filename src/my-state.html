@@ -8,6 +8,7 @@ var colorsSubscription = firebase.database().ref('colors');
 // https://www.npmjs.com/package/firebase
 
 PolobxBehavior = createPolobxBehavior(
+  // Store
   {
     myStore: {
       model: {
@@ -53,6 +54,15 @@ PolobxBehavior = createPolobxBehavior(
         }
       }
     }
-  }
+  },
+  // Logger middleware
+  [
+    function(appState, action) {
+      console.log('%c--- Action ---', 'color: red')
+      console.log('%cAction: ', 'color: green', action);
+      console.log('%cState: ', 'color: blue', appState);
+      console.log('%c------ ------', 'color: red');
+    }
+  ]
 );
 </script>

@@ -45,6 +45,49 @@ subject to an additional IP rights grant found at http://polymer.github.io/PATEN
         }
       },
 
+      stateObservers: [
+        // Action observer
+        // {
+        //   store: 'myStore',
+        //   action: 'myStoreAction',
+        //   observer: actionResult => {
+        //     this.activeSpinner = true;
+        //
+        //     actionResult.then(() => {
+        //       this.activeSpinner = false;
+        //     });
+        //   }
+        // },
+
+        // Store path observer
+        {
+          store: 'myStore',
+          path: 'colors',
+          observer: function(colors) {
+            console.log('View 2 storepathobserver:', colors, this)
+            // if (authData.loggedIn) {
+            //   this.myVar = authData.foo;
+            //   this.myOtherVar = state.otherStateVar;
+            // }
+          }
+        },
+
+        // Store observer
+        {
+          store: 'myStore',
+          observer: function(state) {
+            console.log('View 2 storeobserver:', state.counter, this)
+            // if (state.authData.loggedIn) {
+            //   this.myGreatVar = state.otherStateVar;
+            // }
+          }
+        },
+      ],
+
+      detached: function() {
+        console.log('view 2 dettached');
+      },
+
       myView2VarObserver: function(newValue) {
         this.dispatch({
           store: 'myStore',

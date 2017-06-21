@@ -26,6 +26,7 @@ subject to an additional IP rights grant found at http://polymer.github.io/PATEN
       <h1>Add one to myStore.counter:</h1>
       <button on-click="addOneToCounter">Add one +</button>
       <button on-click="fetchColorsFromServer">Fetch Colors</button>
+      <button on-click="detatchView2">Detach 2</button>
 
       <div>
         <h3>Store status:</h3>
@@ -101,7 +102,7 @@ subject to an additional IP rights grant found at http://polymer.github.io/PATEN
           action: 'addOne'
         });
 
-        console.log(this.getStateProperty('myStore', 'xxx.xx.x'))
+        console.log('getStateProperty xxx.xx.x: ', this.getStateProperty('myStore', 'xxx.xx.x'))
       },
 
       fetchColorsFromServer: function() {
@@ -116,6 +117,10 @@ subject to an additional IP rights grant found at http://polymer.github.io/PATEN
           self.set('loading', false);
         });
 
+      },
+
+      detatchView2: function() {
+        this.fire('detatchView2');
       }
     });
   </script>

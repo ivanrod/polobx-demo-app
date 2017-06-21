@@ -103,7 +103,7 @@ subject to an additional IP rights grant found at http://polymer.github.io/PATEN
             fallback-selection="view404"
             role="main">
           <my-view1 name="view1"></my-view1>
-          <my-view2 name="view2"></my-view2>
+          <my-view2 id="view2" name="view2"></my-view2>
           <my-view3 name="view3"></my-view3>
           <my-view404 name="view404"></my-view404>
         </iron-pages>
@@ -141,6 +141,10 @@ subject to an additional IP rights grant found at http://polymer.github.io/PATEN
         }
       },
 
+      listeners: {
+        'detatchView2': 'detatchView2'
+      },
+
       observers: [
         '_routePageChanged(routeData.page)',
       ],
@@ -165,6 +169,12 @@ subject to an additional IP rights grant found at http://polymer.github.io/PATEN
       _showPage404: function() {
         this.page = 'view404';
       },
+
+      detatchView2: function(e) {
+        console.log('myView2Var', this.$.view2.myView2Var);
+        this.$.view2.remove();
+        console.log('myView2Var', this.$.view2.myView2Var);
+      }
     });
   </script>
 </dom-module>
